@@ -1,0 +1,10 @@
+# Vim
+*~
+*.swp
+
+# pycharm
+.idea/
+
+__pycache__/
+
+
