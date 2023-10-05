@@ -11,7 +11,7 @@ class HtmlFormatterStrategy(FormatterStrategy):
         totalAmount = 0
         frequentRenterPoints = 0
         result = self.formatHeader(customer.getName())
-        for rental in customer._rentals:
+        for rental in customer.getRentals():
             thisAmount = rental.getPrice()
             result += "\t<tr><td>" + rental.getMovie().getTitle() + "</td><td>" + str(thisAmount) + "</td></tr>\n"
             frequentRenterPoints += rental.getFrequentRenterPoints()
@@ -30,7 +30,6 @@ class HtmlFormatterStrategy(FormatterStrategy):
         result += "<p>Amount owed is <em>" + str(totalAmount) + "</em></p>\n"
         result += "<p>You earned <em>" + str(frequentRenterPoints) + "</em> frequent renter points</p>\n"
         return result
-        
 
 
 class TextFormatterStrategy(FormatterStrategy):
@@ -39,10 +38,10 @@ class TextFormatterStrategy(FormatterStrategy):
         frequentRenterPoints = 0
         result = self.formatHeader(customer.getName())
 
-        for each in customer._rentals:
-            thisAmount = each.getPrice()
-            result += "\t" + each.getMovie().getTitle() + "\t" + str(thisAmount) + "\n"
-            frequentRenterPoints += each.getFrequentRenterPoints()
+        for rental in customer.getRentals():
+            thisAmount = rental.getPrice()
+            result += "\t" + rental.getMovie().getTitle() + "\t" + str(thisAmount) + "\n"
+            frequentRenterPoints += rental.getFrequentRenterPoints()
             totalAmount += thisAmount
 
         result += self.formatFooter(totalAmount, frequentRenterPoints)

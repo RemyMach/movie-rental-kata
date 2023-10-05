@@ -1,6 +1,6 @@
 from rental import Rental
 from customer import Customer
-from movie import Movie, MovieCategory, RegularMovie, NewReleaseMovie, ChildrenMovie
+from movie import RegularMovie, NewReleaseMovie, ChildrenMovie
 from formatter_strategy import HtmlFormatterStrategy, TextFormatterStrategy
 
 
